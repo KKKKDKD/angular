@@ -1,17 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Auth } from './auth.modul';
+//import { AuthServis } from "./services/auth.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'demo2';
   msg: string ='';
   enterValue=" ";
   authMsg="";
+  uname="";
+  pass="";
   showtable:boolean=false;
-  hidetable:boolean=true;
+  //hidetable:boolean=true;
+  showHistoryBtn:string="showhistory"
+  time:Date=new Date();
+  status:string="";
+listOfAuth:Auth[]=[];     
+
+
+
+
   public welcome():void{
     this.msg = "your file is lood seccessfully looded"
   }
@@ -19,22 +33,33 @@ export class AppComponent {
     this.msg =""
      
   }
-  public showdata(uname:string,password:string): void{
+  public showdata(uname:string,pass:string): void{
     this.enterValue=uname;
-    this.enterValue=password;
+    this.enterValue=pass;
   }
 
-  public authenticate(uname:string,password:string): void{
-    if (uname=="amir"&& password=="test") {
+
+  public authenticate(uname:string,pass:string): void{
+    if (uname=="amir"&& pass=="test") {
       this.authMsg='welcome'+" "+uname;
+      let auth=new Auth(this.uname,this.pass,new Date(),"success");
+   this.listOfAuth.push(auth);
        }else{
         this.authMsg="pls try again";
+      let auth= new Auth(this.uname,this.pass,new Date(),"success");
        }
   }
 
   public showhide(): void{
-    this.showtable=!this.showtable;
-    this.hidetable=!this.hidetable;
+    if (this.showHistoryBtn=='showHistory') {
+      this.showtable=!this.showtable;
+      this.showHistoryBtn="HideHistory";
+    } else {
+      this.showtable=!this.showtable;
+      this.showHistoryBtn='showHistory';
+    }
+   // this.showtable=!this.showtable;
+  //  this.hidetable=!this.hidetable;
 
   }
 }

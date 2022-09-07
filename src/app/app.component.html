@@ -23,7 +23,7 @@
   <button type="button" (click)="welcome();"class="btn btn-primary" style="margin-left: 10px;">ShowSomeMessage</button> 
   
   <button type="button" (click)="showdata(uname.value,pass.value);"class="btn btn-primary" style="margin-left: 10px;">Message</button>
-  <button type="button" (click)="showhide();"class="btn btn-primary" style="margin-left: 10px;">ShowTable</button> 
+  <button type="button" (click)="showhide();"class="btn btn-primary" style="margin-left: 10px;">{{showHistoryBtn}}</button> 
    
   <hr> 
   <span style="font-size: 18px">is looding.....{{msg}}</span>
@@ -32,23 +32,7 @@
  
   <hr>
   <span style="font-size: 30px">{{authMsg}}</span>
-  <table style="width:100%">
-    <tr>
-      <th>Company</th>
-      <th>Contact</th>
-      <th>Country</th>
-    </tr>
-    <tr>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-    </tr>
-  </table>
+ 
   
 <hr>
 <br>
@@ -58,30 +42,26 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">UserName</th>
+        <th scope="col">password</th>
+        <th scope="col">Last login</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+       
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr  *ngFor="let auth of listOfAuth">
+
         <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>{{auth.uname}}</td>
+        <td>{{auth.pass}}</td>
+        <td>{{auth.time}}</td>
+        <td>{{auth.status}}</td>
+   
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+    
+     
     </tbody>
   </table>
   
