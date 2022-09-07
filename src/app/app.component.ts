@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+
 import { Auth } from './auth.modul';
 //import { AuthServis } from "./services/auth.service";
-
+import { AuthService } from './auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,10 +22,21 @@ export class AppComponent {
   showHistoryBtn:string="showhistory"
   time:Date=new Date();
   status:string="";
-listOfAuth:Auth[]=[];     
 
+  //note if listofAuth is modifire it will not be reflected in service layer
+listOfAuth:Auth[]=[];  
 
+//construct injection
+public constructor(private authService : AuthService){
+}
 
+ngOnInit():void{
+  this.listOfAuth=this.authService.findAuth();
+}
+
+deleteAuth(auth: Auth){
+  this.listOfAuth=this.authService.deleteAuth(auth)
+}
 
   public welcome():void{
     this.msg = "your file is lood seccessfully looded"
@@ -36,6 +48,8 @@ listOfAuth:Auth[]=[];
   public showdata(uname:string,pass:string): void{
     this.enterValue=uname;
     this.enterValue=pass;
+    
+    
   }
 
 

@@ -22,7 +22,7 @@
  
   <button type="button" (click)="welcome();"class="btn btn-primary" style="margin-left: 10px;">ShowSomeMessage</button> 
   
-  <button type="button" (click)="showdata(uname.value,pass.value);"class="btn btn-primary" style="margin-left: 10px;">Message</button>
+  <button type="button" (click)="showdata(uname.value,pass.value);"clasng s="btn btn-primary" style="margin-left: 10px;">Message</button>
   <button type="button" (click)="showhide();"class="btn btn-primary" style="margin-left: 10px;">{{showHistoryBtn}}</button> 
    
   <hr> 
@@ -58,7 +58,9 @@
         <td>{{auth.pass}}</td>
         <td>{{auth.time}}</td>
         <td>{{auth.status}}</td>
-   
+   <td>
+    <button type="button" (click)="deleteAuth(auth);"class="btn btn-primary">delete</button>
+   </td>
       </tr>
     
      
